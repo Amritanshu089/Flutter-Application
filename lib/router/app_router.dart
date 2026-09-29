@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 
 import '../screens/home_page.dart';
 import '../screens/add_task.dart';
+import '../screens/counter_page.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',
@@ -12,7 +13,11 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/add-task',
-      builder: (context, state) => const AddTaskPage(),
+      builder: (context, state) => AddTaskPage(),
+    ),
+    GoRoute(
+      path: '/counter',
+      builder: (context, state) => CounterPage(),
     ),
   ],
 );

@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import 'screens/home_page.dart';
-import 'package:provider/provider.dart';
-import 'providers/task_provider.dart';
+import 'package:get/get.dart';
+import 'controllers/task_controller.dart';
 import 'router/app_router.dart';
 
 void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => TaskProvider(),
-      child: const TaskManagerApp(),
-    ),
-  );
+  // Register TaskController globally via GetX DI
+  Get.put(TaskController());
+
+  runApp(const TaskManagerApp());
 }
 
 class TaskManagerApp extends StatelessWidget {
@@ -31,4 +28,3 @@ class TaskManagerApp extends StatelessWidget {
     );
   }
 }
-

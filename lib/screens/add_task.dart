@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../models/task.dart';
 
-// ─── Canva-inspired color palette ────────────────────────────────────────────
 class _CanvaColors {
-  static const teal      = Color(0xFF00C4CC);
-  static const tealLight = Color(0xFFE0F9FA);
-  static const surface   = Color(0xFFFFFFFF);
-  static const labelText = Color(0xFF2D3436);
-  static const hintText  = Color(0xFF8E9BAF);
-  static const border    = Color(0xFFDDE3E8);
-  static const iconColor = Color(0xFF00C4CC);
+  static const teal        = Color(0xFF00C4CC); 
+  static const tealDark    = Color(0xFF00A8AF);   
+  static const tealLight   = Color(0xFFE0F9FA);   
+  static const navy        = Color(0xFF1A1A2E);   
+  static const surface     = Color(0xFFFFFFFF);   
+  static const cardBg      = Color(0xFFF7FAFA);   
+  static const labelText   = Color(0xFF2D3436);  
+  static const hintText    = Color(0xFF8E9BAF);  
+  static const border      = Color(0xFFDDE3E8);  
+  static const iconColor   = Color(0xFF00C4CC);  
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
 class AddTaskPage extends StatefulWidget {
   const AddTaskPage({super.key});
@@ -38,7 +39,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     super.dispose();
   }
 
-  // ── shared decoration ──────────────────────────────────────────────────────
+ 
   InputDecoration _inputDecoration({
     required String hint,
     required IconData icon,
@@ -83,7 +84,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
         ),
       );
 
-  // ── card wrapper ───────────────────────────────────────────────────────────
   Widget _card({required Widget child}) => Container(
         width: double.infinity,
         padding: const EdgeInsets.all(16),
@@ -93,7 +93,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
           border: Border.all(color: _CanvaColors.border, width: 1),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.04),
+              color: Colors.black.withOpacity(0.04),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -107,7 +107,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
     return Scaffold(
       backgroundColor: const Color(0xFFF0F4F8),
 
-      // ── AppBar ──────────────────────────────────────────────────────────────
+     
       appBar: AppBar(
         backgroundColor: _CanvaColors.teal,
         foregroundColor: Colors.white,
@@ -138,7 +138,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              // ── Task Name ────────────────────────────────────────────────
+              
               _card(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,7 +167,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
               const SizedBox(height: 16),
 
-              // ── Description ──────────────────────────────────────────────
+              
               _card(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -234,7 +234,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
               const SizedBox(height: 16),
 
-              // ── Category & Priority (row) ────────────────────────────────
+              
               Row(
                 children: [
                   // Category
@@ -245,7 +245,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         children: [
                           _sectionLabel("CATEGORY"),
                           DropdownButtonFormField<String>(
-                            initialValue: selectedCategory,
+                            value: selectedCategory,
                             icon: const Icon(
                               Icons.keyboard_arrow_down_rounded,
                               color: _CanvaColors.teal,
@@ -288,7 +288,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         children: [
                           _sectionLabel("PRIORITY"),
                           DropdownButtonFormField<String>(
-                            initialValue: selectedPriority,
+                            value: selectedPriority,
                             icon: const Icon(
                               Icons.keyboard_arrow_down_rounded,
                               color: _CanvaColors.teal,
@@ -326,7 +326,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
               const SizedBox(height: 16),
 
-              // ── Due Date ─────────────────────────────────────────────────
+              
               _card(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -405,7 +405,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
               const SizedBox(height: 16),
 
-              // ── Toggles ──────────────────────────────────────────────────
+              
               _card(
                 child: Column(
                   children: [
@@ -437,7 +437,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         ),
                         Switch(
                           value: isImportant,
-                          activeThumbColor: _CanvaColors.teal,
+                          activeColor: _CanvaColors.teal,
                           onChanged: (v) => setState(() => isImportant = v),
                         ),
                       ],
@@ -445,7 +445,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
                     const Divider(color: _CanvaColors.border, height: 24),
 
-                    // Enable Reminder
                     Row(
                       children: [
                         Container(
@@ -484,7 +483,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
               const SizedBox(height: 28),
 
-              // ── Submit Button ─────────────────────────────────────────────
+              
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -511,7 +510,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    shadowColor: _CanvaColors.teal.withValues(alpha: 0.4),
+                    shadowColor: _CanvaColors.teal.withOpacity(0.4),
                   ),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
